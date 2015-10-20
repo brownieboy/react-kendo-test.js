@@ -20,7 +20,7 @@ class KendoRadialGauge extends React.Component{
 
   componentWillReceiveProps(nextProps) {
     if(nextProps.value !== this.props.value) {
-      $(this.getDOMNode()).data("kendoRadialGauge").value(nextProps.value);
+      $(ReactDOM.findDOMNode(this)).data("kendoRadialGauge").value(nextProps.value);
     }
   }
 

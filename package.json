@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "es6bindall": "0.0.2",
     "jquery": "^2.1.4",
     "lodash": "^3.10.1",
     "react": "^0.14.0",

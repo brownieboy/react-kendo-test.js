@@ -1,7 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {es6BindAll} from 'es6bindall';
 
-class KendoSlider extends React.Component{ 
+class KendoSlider extends React.Component{
+  constructor(props) {
+    super(props);
+    es6BindAll(this, ["handleChange"]);
+  }
+
   componentDidMount() {
     var props = this.props;
     $(ReactDOM.findDOMNode(this)).kendoSlider({
@@ -14,9 +20,11 @@ class KendoSlider extends React.Component{
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.value !== this.props.value) {
-      $(this.getDOMNode()).data("kendoRadialGauge").value(nextProps.value);
-    }
+    // Doesn't appear to be necessary?!!
+    // if(nextProps.value !== this.props.value) {
+    //   var $theDOMNode = $(ReactDOM.findDOMNode(this));
+    //  $(ReactDOM.findDOMNode(this)).attr("data-kendoRadialGauge").value(nextProps.value);
+    // }
   }
 
   componentWillUnmount() {
@@ -24,7 +32,7 @@ class KendoSlider extends React.Component{
   }
 
   handleChange(e) {
-    // this.publish("change.speed", { speed: e.value });
+    this.props.handleChange(e.value);
     console.log("handleChange()");
   }
 
